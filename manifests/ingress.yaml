@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: microtodoui-ingress
+  labels:
+    app.kubernetes.io/name: microtodoui-ingress
+spec:
+  ingressClassName: azure-application-gateway
+  rules:
+  - host: todoui.devopsinsight.biz
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: microtodoui
+            port: 
+              number: 80
