@@ -8,7 +8,7 @@ metadata:
     kubernetes.io/ingress.class: azure-application-gateway   # ✅ Required for AGIC
   
 spec:
-  ingressClassName: ingressApplicationGateway
+  ingressClassName: azure-application-gateway
   rules:
   - host: todoui.devopsinsight.biz
     http:
