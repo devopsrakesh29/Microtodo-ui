@@ -1,0 +1,43 @@
+name: docker image build pipeline
+on: 
+  push:  
+    branches:
+    - main
+
+permissions:
+    id-token: write
+    contents: read
+
+
+jobs:
+    image_build:
+        name: image build ci
+        runs-on: ubuntu-latest
+        env:
+          IMAGE_NAME: microtodoui
+          IMAGE_TAG: V1
+          ACR_NAME: rakeshacr
+          ACR_SERVER_NAME: rakeshacr.azurecr.io
+        steps:
+          - name: checkout
+            uses: actions/checkout@v6-beta
+            
+          - name: azure_login
+            uses: Azure/login@v2.3.0
+            with:  
+                client-id: ${{secrets.AZURE_SECRET_ID}}
+                tenant-id: ${{secrets.AZURE_TENANT_ID}}
+                subscription-id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+                
+          - name: acr login
+            run: az acr login -n $ACR_NAME
+          
+          - name: docker build
+            run: docker build -t $IMAGE_NAME:$TAG .
+
+          - name: docker tag
+            run: docker tag -t   $IMAGE_NAME:$TAG $ACR_SERVER_NAME/$IMAGE_NAME:$TAG
+
+          - name: docker push
+            run: docker push $ACR_SERVER_NAME/$IMAGE_NAME:$TAG
+

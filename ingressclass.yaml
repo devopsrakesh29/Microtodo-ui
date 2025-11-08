@@ -3,4 +3,4 @@ kind: IngressClass
 metadata:
   name: azure-application-gateway
 spec:
-  controller: appgw.ingress.kubernetes.io/ingress-controller
+  controller: azure/application-gateway
