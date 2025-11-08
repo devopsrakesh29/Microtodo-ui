@@ -33,11 +33,11 @@ jobs:
             run: az acr login -n $ACR_NAME
           
           - name: docker build
-            run: docker build -t $IMAGE_NAME:$TAG .
+            run: docker build -t $IMAGE_NAME:$IMAGE_TAG .
 
           - name: docker tag
-            run: docker tag -t   $IMAGE_NAME:$TAG $ACR_SERVER_NAME/$IMAGE_NAME:$TAG
+            run: docker tag -t   $IMAGE_NAME:$TAG $ACR_SERVER_NAME/$IMAGE_NAME:$IMAGE_TAG
 
           - name: docker push
-            run: docker push $ACR_SERVER_NAME/$IMAGE_NAME:$TAG
+            run: docker push $ACR_SERVER_NAME/$IMAGE_NAME:$IMAGE_TAG
 
