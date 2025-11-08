@@ -36,7 +36,7 @@ jobs:
             run: docker build -t $IMAGE_NAME:$IMAGE_TAG .
 
           - name: docker tag
-            run: docker tag $IMAGE_NAME:$TAG $ACR_SERVER_NAME/$IMAGE_NAME:$IMAGE_TAG
+            run: docker tag $IMAGE_NAME:$IMAGE_TAG $ACR_SERVER_NAME/$IMAGE_NAME:$IMAGE_TAG
 
           - name: docker push
             run: docker push $ACR_SERVER_NAME/$IMAGE_NAME:$IMAGE_TAG
