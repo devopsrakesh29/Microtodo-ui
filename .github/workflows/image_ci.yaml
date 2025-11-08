@@ -15,7 +15,7 @@ jobs:
         runs-on: ubuntu-latest
         env:
           IMAGE_NAME: microtodoui
-          IMAGE_TAG: V1
+          IMAGE_TAG: v1
           ACR_NAME: rakeshacr
           ACR_SERVER_NAME: rakeshacr.azurecr.io
         steps:
