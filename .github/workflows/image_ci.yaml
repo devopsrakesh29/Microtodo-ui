@@ -31,19 +31,17 @@ jobs:
                 
           - name: acr login
             run: az acr login -n $ACR_NAME
-            
+
           - name: Set up QEMU
             uses: docker/setup-qemu-action@v3
 
           - name: Set up Docker Buildx
             uses: docker/setup-buildx-action@v3          
 
-          - name: docker build
-            run: docker buildx build --platform linux/arm64 -t $IMAGE_NAME:$IMAGE_TAG .
-
-          - name: docker tag
-            run: docker tag $IMAGE_NAME:$IMAGE_TAG $ACR_SERVER_NAME/$IMAGE_NAME:$IMAGE_TAG
-
-          - name: docker push
-            run: docker push $ACR_SERVER_NAME/$IMAGE_NAME:$IMAGE_TAG
+          - name: docker build & push
+            run: |
+                docker buildx build \
+                --platform linux/arm64 \
+                -t $ACR_SERVER_NAME/$IMAGE_NAME:$IMAGE_TAG \
+                --push .
 
