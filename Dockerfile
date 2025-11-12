@@ -16,6 +16,7 @@ COPY . .
 # Build the React app
 RUN npm run build
 
+
 # Stage 2: Create a minimal production-ready image
 FROM nginx:alpine
 
