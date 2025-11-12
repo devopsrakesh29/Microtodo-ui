@@ -8,7 +8,6 @@ permissions:
     id-token: write
     contents: read
 
-
 jobs:
     image_build:
         name: image build ci
