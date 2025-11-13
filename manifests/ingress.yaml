@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: microtodoui-ingress
   annotations:
-    kubernetes.io/ingress.class: azure-application-gateway   # ✅ Required for AGIC
+    kubernetes.io/ingress.class: azure/application-gateway   # ✅ Required for AGIC
   
 spec:
   ingressClassName: azure-application-gateway
