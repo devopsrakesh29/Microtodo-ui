@@ -21,4 +21,4 @@ spec:
         image: rakeshacr.azurecr.io/microtodoui:v1
         ports:
         - containerPort: 80
-          protocol: TCP
+          protocol: TCP 
